@@ -11,7 +11,7 @@ const envVarsSchema = Joi.object()
     PORT: Joi.number().default(3000),
     LOGGLY_ENABLED: Joi.string().description('Toggle Loggly'),
     LOGGLY_TOKEN: Joi.string().description('Loggly custom token'),
-    NEWRELIC_LICENSE: Joi.string().required().description('New Relic licence key'),
+    NEWRELIC_LICENSE: Joi.string().description('New Relic licence key'),
   })
   .unknown();
 
