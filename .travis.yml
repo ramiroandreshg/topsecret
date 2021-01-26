@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - '14'
+env:
+  global:
+    - NODE_ENV=test
+    - PORT=3000
+    - MONGODB_URL=mongodb://127.0.0.1:27017/reclutech
+cache:
+  directories:
+  - "$HOME/.npm"
+branches:
+  only:
+    - develop
+script: npm run lint && npm test
