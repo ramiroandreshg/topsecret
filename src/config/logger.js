@@ -10,7 +10,7 @@ const enumerateErrorFormat = winston.format((info) => {
   return info;
 });
 
-let logglyTransport
+let logglyTransport;
 if (config.loggly.enabled) {
   logglyTransport = new winston.transports.Loggly({
     subdomain: config.loggly.subdomain,
@@ -36,16 +36,16 @@ const logger = winston.createLogger({
   ),
   transports: config.loggly.enabled
     ? [
-      new winston.transports.Console({
-        stderrLevels: ['error'],
-      }),
-      logglyTransport,
-    ]
+        new winston.transports.Console({
+          stderrLevels: ['error'],
+        }),
+        logglyTransport,
+      ]
     : [
-      new winston.transports.Console({
-        stderrLevels: ['error'],
-      }),
-    ],
+        new winston.transports.Console({
+          stderrLevels: ['error'],
+        }),
+      ],
 });
 
 module.exports = logger;
