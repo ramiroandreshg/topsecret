@@ -2,10 +2,57 @@
   "name": "topsecret",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "pm2 start ecosystem.config.json --no-daemon",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "test": "jest -i --verbose  --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --check **/*.js",
+    "prettier:fix": "prettier --write **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramiroandreshg/topsecret.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramiroandreshg/topsecret/issues"
+  },
+  "homepage": "https://github.com/ramiroandreshg/topsecret#readme",
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-security": "^1.4.0",
+    "faker": "^5.1.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "supertest": "^6.1.1"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.2.3",
+    "helmet": "^4.3.1",
+    "http-status": "^1.5.0",
+    "morgan": "^1.10.0",
+    "newrelic": "^7.1.0",
+    "pm2": "^4.5.1",
+    "swagger-jsdoc": "4.2.0",
+    "swagger-ui-express": "4.1.4",
+    "winston": "^3.3.3",
+    "winston-loggly-bulk": "^3.1.1",
+    "xss-clean": "^0.1.1"
+  }
 }
