@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 const path = require('path');
 const Joi = require('@hapi/joi');
-const satellites = require('./satellites');
+const { SAT_DATA } = require('./satellites');
 
 dotenv.config({ path: path.join(__dirname, `../../.env.${process.env.NODE_ENV}`) });
 
@@ -24,7 +24,7 @@ if (error) {
 module.exports = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
-  satellites,
+  satellites: SAT_DATA,
   loggly: {
     enabled: !!envVars.LOGGLY_ENABLED || false,
     subdomain: 'topsecret',
