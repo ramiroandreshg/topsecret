@@ -14,7 +14,8 @@ const processDataFromMultipleSatellites = catchAsync(async (req, res) => {
 });
 
 const processDataFromSingleSatellite = catchAsync(async (req, res) => {
-  const satelliteData = await topsecretService.saveSingleSatelliteData(req.body);
+  const { satelliteName } = req.params;
+  const satelliteData = await topsecretService.processAndSaveSingleSatelliteData({ ...req.body, name: satelliteName });
   res.status(httpStatus.CREATED).send(satelliteData);
 });
 

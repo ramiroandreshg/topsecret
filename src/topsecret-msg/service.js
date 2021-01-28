@@ -54,10 +54,13 @@ const getStoredMessageAndLocation = async () => {
 };
 
 // it should save satellite data and if we've got already the other 2 satellite data it should precalculate message and location
-const saveSingleSatelliteData = (satelliteData) => {};
+const processAndSaveSingleSatelliteData = async (satelliteData) => {
+  console.log('data', satelliteData);
+  return satelliteData;
+};
 
 module.exports = {
   getMessageAndLocation,
-  saveSingleSatelliteData,
+  processAndSaveSingleSatelliteData,
   getStoredMessageAndLocation,
 };

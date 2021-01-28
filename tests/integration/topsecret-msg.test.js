@@ -28,7 +28,16 @@ describe('topsecret multi sattelite route', () => {
       };
     });
 
-    // it('should return 200 and successfully process the hidden message and coordinates given valid data', async () => {});
+    it('should return 200 and successfully process the hidden message and coordinates given valid data', async () => {
+      const res = await request(app).post(topsecretEndpoint).send(multiSatelliteData).expect(httpStatus.OK);
+      expect(res.body).toEqual({
+        position: {
+          x: -100,
+          y: 75.7,
+        },
+        message: 'este es un mensaje secreto.',
+      });
+    });
 
     it('should return 400 error if no sattelites data is provided', async () => {
       delete multiSatelliteData.satellites;
