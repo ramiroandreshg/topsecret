@@ -51,11 +51,11 @@ const getMessageAndLocation = async ({ satellites }) => {
 };
 
 const getStoredMessageAndLocation = async () => {
-  const hiddenMessageAndLocation = await memoryRepository.getMessageAndLocation();
-  if (isEmptyObject(hiddenMessageAndLocation)) {
+  const storedMessageAndLocation = await memoryRepository.getMessageAndLocation();
+  if (isEmptyObject(storedMessageAndLocation)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'There is not enough information.');
   }
-  return hiddenMessageAndLocation;
+  return storedMessageAndLocation;
 };
 
 const processAndSaveSingleSatelliteData = async (satelliteData) => {
