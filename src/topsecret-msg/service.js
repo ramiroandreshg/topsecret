@@ -38,12 +38,16 @@ const getMessageAndLocation = async ({ satellites }) => {
   const { distances, partialMessages } = getDataFromSatellites(satellites);
   const locationPromise = getLocation(distances);
   const messagePromise = getMessage(partialMessages);
-  const [finalLocation, finalMessage] = await Promise.all([locationPromise, messagePromise]);
-
-  return {
-    position: finalLocation,
-    message: finalMessage,
-  };
+  try {    
+    const [finalLocation, finalMessage] = await Promise.all([locationPromise, messagePromise]);
+    return {
+      position: finalLocation,
+      message: finalMessage,
+    };
+  } catch (error) {
+    logger.error(error);
+    throw new ApiError(httpStatus.BAD_REQUEST, 'There is not enough information.');
+  }
 };
 
 const getStoredMessageAndLocation = async () => {
