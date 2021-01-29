@@ -4,7 +4,7 @@ const memoryRepository = new MemoryRepository();
 
 describe('Memory Repository suite case', () => {
   beforeEach(async () => {
-    await memoryRepository.cleanUpSatellitesData();
+    await memoryRepository.cleanUpData();
   });
 
   it('should start with a clean repository if no satellite data has been provided', async () => {
@@ -57,7 +57,7 @@ describe('Memory Repository suite case', () => {
     let persistedData = await memoryRepository.getAllSatellitesData();
     expect(persistedData.length).toBe(1);
 
-    await memoryRepository.cleanUpSatellitesData();
+    await memoryRepository.cleanUpData();
     persistedData = await memoryRepository.getAllSatellitesData();
 
     expect(persistedData.length).toBe(0);

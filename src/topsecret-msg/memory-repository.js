@@ -14,6 +14,7 @@ module.exports = class MemoryRepository extends AbstractRepository {
   constructor() {
     super();
     this.satellites = initSatellitesData();
+    this.secret = {};
   }
 
   async saveSingleSatellitesData(singleSatelliteData) {
@@ -31,7 +32,17 @@ module.exports = class MemoryRepository extends AbstractRepository {
     return satellitesData;
   }
 
-  async cleanUpSatellitesData() {
+  async saveMessageAndLocation(message, location) {
+    this.secret.message = message;
+    this.secret.position = location;
+  }
+
+  async getMessageAndLocation() {
+    return this.secret;
+  }
+
+  async cleanUpData() {
     this.satellites = initSatellitesData();
+    this.secret = {};
   }
 };

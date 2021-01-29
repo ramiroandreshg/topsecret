@@ -9,7 +9,15 @@ module.exports = class AbstractRepository {
     throw new Error('Not implemented');
   }
 
-  async cleanUpSatellitesData() {
+  async saveMessageAndLocation(message, location) {
+    throw new Error('Not implemented');
+  }
+
+  async getMessageAndLocation() {
+    throw new Error('Not implemented');
+  }
+
+  async cleanUpData() {
     throw new Error('Not implemented');
   }
 };

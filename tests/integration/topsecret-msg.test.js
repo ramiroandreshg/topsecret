@@ -39,12 +39,12 @@ describe('topsecret multi sattelite route', () => {
       });
     });
 
-    it('should return 400 error if no sattelites data is provided', async () => {
+    it('should return 400 error if no satellites data is provided', async () => {
       delete multiSatelliteData.satellites;
       await request(app).post(topsecretEndpoint).send(multiSatelliteData).expect(httpStatus.BAD_REQUEST);
     });
 
-    it('should return 400 error if sattelites data is provided but it has missing properties', async () => {
+    it('should return 400 error if satellites data is provided but it has missing properties', async () => {
       delete multiSatelliteData.satellites[1].message;
       delete multiSatelliteData.satellites[0].distance;
       delete multiSatelliteData.satellites[2].name;

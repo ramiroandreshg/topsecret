@@ -20,13 +20,8 @@ const processDataFromSingleSatellite = catchAsync(async (req, res) => {
 });
 
 const getMessageFromSplitSatellitesData = catchAsync(async (req, res) => {
-  try {
-    const topsecretMessage = await topsecretService.getStoredMessageAndLocation();
-    res.status(httpStatus.OK).send(topsecretMessage);
-  } catch (error) {
-    logger.error(error);
-    res.status(httpStatus.NOT_FOUND).send();
-  }
+  const topsecretMessage = await topsecretService.getStoredMessageAndLocation();
+  res.status(httpStatus.OK).send(topsecretMessage);
 });
 
 module.exports = {
