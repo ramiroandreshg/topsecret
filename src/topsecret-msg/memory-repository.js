@@ -17,7 +17,7 @@ module.exports = class MemoryRepository extends AbstractRepository {
     this.secret = {};
   }
 
-  async saveSingleSatellitesData(singleSatelliteData) {
+  async saveSingleSatelliteData(singleSatelliteData) {
     const { name } = singleSatelliteData;
     this.satellites[name] = singleSatelliteData;
   }

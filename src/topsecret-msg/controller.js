@@ -1,5 +1,4 @@
 const httpStatus = require('http-status');
-const logger = require('../config/logger');
 const catchAsync = require('../utils/catchAsync');
 const topsecretService = require('./service');
 

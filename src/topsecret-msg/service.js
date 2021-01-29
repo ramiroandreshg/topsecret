@@ -6,6 +6,7 @@ const MemoryRepository = require('./memory-repository');
 
 const memoryRepository = new MemoryRepository();
 
+// eslint-disable-next-line no-unused-vars
 const getLocation = async (distances) => {
   // get location from intersecting satellite circles
   // if no possible location then throw an ApiError
@@ -15,6 +16,7 @@ const getLocation = async (distances) => {
   };
 };
 
+// eslint-disable-next-line no-unused-vars
 const getMessage = async (partialMessages) => {
   // build message from what the satellites received (individual partial messages might be broken)
   // consider that we might miss words. If no satellite got a given word then we should throw an ApiError
@@ -38,7 +40,7 @@ const getMessageAndLocation = async ({ satellites }) => {
   const { distances, partialMessages } = getDataFromSatellites(satellites);
   const locationPromise = getLocation(distances);
   const messagePromise = getMessage(partialMessages);
-  try {    
+  try {
     const [finalLocation, finalMessage] = await Promise.all([locationPromise, messagePromise]);
     return {
       position: finalLocation,
@@ -59,7 +61,7 @@ const getStoredMessageAndLocation = async () => {
 };
 
 const processAndSaveSingleSatelliteData = async (satelliteData) => {
-  await memoryRepository.saveSingleSatellitesData(satelliteData);
+  await memoryRepository.saveSingleSatelliteData(satelliteData);
   const data = await memoryRepository.getAllSatellitesData();
 
   const isEnoughSatellitesData = data.length >= 3;

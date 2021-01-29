@@ -14,7 +14,7 @@ describe('Memory Repository suite case', () => {
 
   it('should persist single satellite data and be able to retrieve it', async () => {
     const satelliteData = { name: 'kenobi', distance: 10.2, message: ['simple', 'message'] };
-    await memoryRepository.saveSingleSatellitesData(satelliteData);
+    await memoryRepository.saveSingleSatelliteData(satelliteData);
 
     const persistedData = await memoryRepository.getAllSatellitesData();
     expect(persistedData).toEqual([satelliteData]);
@@ -22,13 +22,13 @@ describe('Memory Repository suite case', () => {
 
   it('should persist single satellite data for every satellite', async () => {
     const kenobiData = { name: 'kenobi', distance: 10.2, message: ['simple', 'message'] };
-    await memoryRepository.saveSingleSatellitesData(kenobiData);
+    await memoryRepository.saveSingleSatelliteData(kenobiData);
 
     const skywalkerData = { name: 'skywalker', distance: 10.2, message: ['simple', 'message'] };
-    await memoryRepository.saveSingleSatellitesData(skywalkerData);
+    await memoryRepository.saveSingleSatelliteData(skywalkerData);
 
     const satoData = { name: 'sato', distance: 10.2, message: ['simple', 'message'] };
-    await memoryRepository.saveSingleSatellitesData(satoData);
+    await memoryRepository.saveSingleSatelliteData(satoData);
 
     const persistedData = await memoryRepository.getAllSatellitesData();
     expect(persistedData).toEqual([kenobiData, skywalkerData, satoData]);
@@ -36,13 +36,13 @@ describe('Memory Repository suite case', () => {
 
   it('should override single satellite data if new data arrives', async () => {
     const satelliteData = { name: 'kenobi', distance: 10.2, message: ['simple', 'message'] };
-    await memoryRepository.saveSingleSatellitesData(satelliteData);
+    await memoryRepository.saveSingleSatelliteData(satelliteData);
 
     let persistedData = await memoryRepository.getAllSatellitesData();
     expect(persistedData).toEqual([satelliteData]);
 
     satelliteData.distance = 200;
-    await memoryRepository.saveSingleSatellitesData(satelliteData);
+    await memoryRepository.saveSingleSatelliteData(satelliteData);
 
     persistedData = await memoryRepository.getAllSatellitesData();
     const { distance } = persistedData[0];
@@ -52,7 +52,7 @@ describe('Memory Repository suite case', () => {
 
   it('should remove all existent data when performing a clean up', async () => {
     const satelliteData = { name: 'kenobi', distance: 10.2, message: ['simple', 'message'] };
-    await memoryRepository.saveSingleSatellitesData(satelliteData);
+    await memoryRepository.saveSingleSatelliteData(satelliteData);
 
     let persistedData = await memoryRepository.getAllSatellitesData();
     expect(persistedData.length).toBe(1);

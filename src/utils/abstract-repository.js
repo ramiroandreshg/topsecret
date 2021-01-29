@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable class-methods-use-this */
 module.exports = class AbstractRepository {
-  async saveSingleSatellitesData(singleSatelliteData) {
+  async saveSingleSatelliteData(singleSatelliteData) {
     throw new Error('Not implemented');
   }
 
