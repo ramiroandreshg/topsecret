@@ -35,7 +35,7 @@ describe('topsecret multi sattelite route', () => {
           x: -100,
           y: 75.7,
         },
-        message: 'este es un mensaje secreto.',
+        message: 'este es un mensaje secreto',
       });
     });
 

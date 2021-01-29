@@ -33,4 +33,8 @@ module.exports = {
   newRelic: {
     licenseKey: envVars.NEWRELIC_LICENSE,
   },
+  algorithms: {
+    getLocationPath: 'v1',
+    getMessagePath: 'v1',
+  },
 };
