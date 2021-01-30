@@ -4,29 +4,26 @@ const SAT_NAMES = {
   SATO: 'sato',
 };
 
-const SAT_DATA = [
-  {
-    name: SAT_NAMES.KENOBI,
+const SAT_DATA = {
+  [SAT_NAMES.KENOBI]: {
     coords: {
       x: -500,
       y: -200,
     },
   },
-  {
-    name: SAT_NAMES.SKYWALKER,
+  [SAT_NAMES.SKYWALKER]: {
     coords: {
       x: 100,
       y: -100,
     },
   },
-  {
-    name: SAT_NAMES.SATO,
+  [SAT_NAMES.SATO]: {
     coords: {
       x: 500,
       y: 100,
     },
   },
-];
+};
 
 module.exports = {
   SAT_DATA,

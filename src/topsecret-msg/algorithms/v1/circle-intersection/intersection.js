@@ -1,4 +1,4 @@
-const { isFiniteNumber, removeDuplicates, roundPrecise } = require('../../../../utils/utils');
+const { isFiniteNumber, removeDuplicatePoints, roundPrecise } = require('../../../../utils/utils');
 const Circle = require('./circle');
 
 const formatResult = (coordsArray) => {
@@ -10,7 +10,7 @@ const formatResult = (coordsArray) => {
       result.push({ x: roundPrecise(x), y: roundPrecise(y) });
     }
   }
-  return removeDuplicates(result);
+  return removeDuplicatePoints(result);
 };
 
 const calculateIntersection = (c1, c2) => {

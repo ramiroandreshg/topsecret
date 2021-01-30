@@ -11,17 +11,17 @@ describe('topsecret multi sattelite route', () => {
         satellites: [
           {
             name: 'kenobi',
-            distance: 100.0,
+            distance: 538.516481,
             message: ['este', '', '', 'mensaje', ''],
           },
           {
             name: 'skywalker',
-            distance: 115.5,
+            distance: 141.421356,
             message: ['', 'es', '', '', 'secreto'],
           },
           {
             name: 'sato',
-            distance: 142.7,
+            distance: 509.901951,
             message: ['este', '', 'un', '', ''],
           },
         ],
@@ -32,8 +32,8 @@ describe('topsecret multi sattelite route', () => {
       const res = await request(app).post(topsecretEndpoint).send(multiSatelliteData).expect(httpStatus.OK);
       expect(res.body).toEqual({
         position: {
-          x: -100,
-          y: 75.7,
+          x: 0,
+          y: 0,
         },
         message: 'este es un mensaje secreto',
       });
