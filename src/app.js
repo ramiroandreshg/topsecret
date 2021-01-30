@@ -6,6 +6,7 @@ const cors = require('cors');
 const httpStatus = require('http-status');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
+const routes = require('./routes/v1');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
 const { version } = require('../package.json');
@@ -35,6 +36,9 @@ app.use(compression());
 // enable cors
 app.use(cors());
 app.options('*', cors());
+
+// v1 api routes
+app.use('/', routes);
 
 // healthcheck
 app.use('/healthcheck', async (req, res) => {
