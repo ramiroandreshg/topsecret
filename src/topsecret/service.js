@@ -31,7 +31,7 @@ const getMessageAndLocation = async ({ satellites }) => {
       message: finalMessage,
     };
   } catch (error) {
-    logger.error(error);
+    logger.debug(error);
     throw new ApiError(httpStatus.NOT_FOUND, 'There is not enough information.');
   }
 };

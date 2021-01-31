@@ -55,6 +55,16 @@ describe('topsecret multi sattelite route', () => {
       multiSatelliteData.satellites[0].name = 'unknown-satellite';
       await request(app).post(multiSatelliteEndpoint).send(multiSatelliteData).expect(httpStatus.BAD_REQUEST);
     });
+
+    it('should return 404 error if it is not possible to crack the secret message', async () => {
+      multiSatelliteData.satellites[0].message = ['', '', 'totally-different-message', '', ''];
+      await request(app).post(multiSatelliteEndpoint).send(multiSatelliteData).expect(httpStatus.NOT_FOUND);
+    });
+
+    it('should return 404 error if it is not possible to crack the secret location', async () => {
+      multiSatelliteData.satellites[1].distance = 10; // just any number that breaks the 3 circle intersection
+      await request(app).post(multiSatelliteEndpoint).send(multiSatelliteData).expect(httpStatus.NOT_FOUND);
+    });
   });
 });
 
