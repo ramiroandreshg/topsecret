@@ -13,7 +13,7 @@ components:
         message:
           type: string
 
-    Satellite:
+    SatelliteData:
       type: object
       properties:
         name:

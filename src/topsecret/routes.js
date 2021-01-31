@@ -4,14 +4,14 @@ const { multipleSatelliteData, singleSatelliteData } = require('./validations');
 const {
   processDataFromMultipleSatellites,
   processDataFromSingleSatellite,
-  getMessageFromSplitSatellitesData,
+  getSecretFromSplitSatellitesData,
 } = require('./controller');
 
 const router = express.Router();
 
 router.route('/topsecret').post(validate(multipleSatelliteData), processDataFromMultipleSatellites);
 router.route('/topsecret_split/:satelliteName').post(validate(singleSatelliteData), processDataFromSingleSatellite);
-router.route('/topsecret_split').get(getMessageFromSplitSatellitesData);
+router.route('/topsecret_split').get(getSecretFromSplitSatellitesData);
 
 module.exports = router;
 
@@ -44,7 +44,7 @@ module.exports = router;
  *                satellites:
  *                  type: array
  *                  items:
- *                    $ref: '#/components/schemas/Satellite'
+ *                    $ref: '#/components/schemas/SatelliteData'
  *      responses:
  *        "200":
  *          description: OK
@@ -118,7 +118,7 @@ module.exports = router;
  *          content:
  *            application/json:
  *              schema:
- *                 $ref: '#/components/schemas/Satellite'
+ *                 $ref: '#/components/schemas/SatelliteData'
  *        "400":
  *          $ref: '#/components/responses/BadRequest'
  */
