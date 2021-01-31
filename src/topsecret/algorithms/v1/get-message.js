@@ -1,3 +1,17 @@
+const validatePartialMessages = (partialMessages) => {
+  if (partialMessages.length !== 3) {
+    return new Error('We need exactly 3 partial messages.');
+  }
+
+  const msgALenght = partialMessages[0].length;
+  const msgBLenght = partialMessages[1].length;
+  const msgCLenght = partialMessages[2].length;
+
+  if (msgALenght !== msgBLenght || msgBLenght !== msgCLenght) {
+    return new Error('We need the messages to have the exact same length.');
+  }
+};
+
 /*
  preconditions for v1:
   exactly 3 partialmessages
@@ -6,6 +20,11 @@
 */
 const getMessage = (partialMessages) => {
   return new Promise((resolve, reject) => {
+    const validationError = validatePartialMessages(partialMessages);
+    if (validationError) {
+      reject(validationError);
+    }
+
     const msgA = partialMessages[0];
     const msgB = partialMessages[1];
     const msgC = partialMessages[2];

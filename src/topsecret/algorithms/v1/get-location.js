@@ -2,12 +2,23 @@ const { satellites } = require('../../../config/config');
 const { findIntersection } = require('./circle-intersection');
 const { isEmptyArray, intersectArrayOfPoints } = require('../../../utils/utils');
 
+const validateDistances = (distances) => {
+  if (distances.length < 3) {
+    return new Error('We need at least data from 3 satellites to triangulate the position');
+  }
+};
+
 /*
  preconditions for v1:
   at least 3 (or more) satellites distance info
 */
 const getLocation = async (distances) => {
   return new Promise((resolve, reject) => {
+    const validationError = validateDistances(distances);
+    if (validationError) {
+      reject(validationError);
+    }
+
     const distA = distances[0];
     const distB = distances[1];
 
@@ -35,11 +46,11 @@ const getLocation = async (distances) => {
         y: satellites[distC.satellite].coords.y,
         d: distC.distance,
       };
-      const tempIntersections = findIntersection(circle1, circle3);
-      if (isEmptyArray(tempIntersections)) {
+      const newCircleIntersections = findIntersection(circle1, circle3);
+      if (isEmptyArray(newCircleIntersections)) {
         reject(new Error('No intersection between satellite location data.'));
       }
-      baseIntersections = intersectArrayOfPoints(baseIntersections, tempIntersections);
+      baseIntersections = intersectArrayOfPoints(baseIntersections, newCircleIntersections);
       if (isEmptyArray(baseIntersections)) {
         reject(new Error('No intersection between new satellite and previous satellite location data.'));
       }
