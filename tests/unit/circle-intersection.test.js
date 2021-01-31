@@ -22,7 +22,7 @@ describe('Find circle intersection unit tests', () => {
     expect(intersection).toEqual([{ x: 2, y: 0 }]);
   });
 
-  it('should return a both intersection points if in regular intersection scenario', () => {
+  it('should return both intersection points in a regular intersection scenario', () => {
     const c1 = { x: -1, y: 1, d: 2 };
     const c2 = { x: 0, y: 0, d: 1 };
     const intersection = findIntersection(c1, c2);
