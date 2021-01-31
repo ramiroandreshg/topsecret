@@ -22,10 +22,12 @@ describe('getMessage v1 unit tests', () => {
     await expect(getMessage(partialMessages)).rejects.toEqual(new Error('There is a missing word in all partial messages.'));
   });
 
-  it('should throw if a partial message came empty', async () => {
+  it('should throw if a partial messages have different lengths', async () => {
     const partialMessages = [['este', '', 'un', '', '', '.'], [], ['', 'es', '', 'mensaje', 'secreto', '.']];
     expect.assertions(1);
-    await expect(getMessage(partialMessages)).rejects.toEqual(new Error('Empty partial messages.'));
+    await expect(getMessage(partialMessages)).rejects.toEqual(
+      new Error('We need the messages to have the exact same length.')
+    );
   });
 
   it('should find a message when a given every partial message provides at least a word', async () => {

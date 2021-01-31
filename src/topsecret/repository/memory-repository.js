@@ -1,6 +1,6 @@
-const { SAT_NAMES } = require('../config/satellites');
-const { isEmptyObject } = require('../utils/utils');
-const AbstractRepository = require('../utils/abstract-repository');
+const { SAT_NAMES } = require('../../config/satellites');
+const { isEmptyObject } = require('../../utils/utils');
+const AbstractRepository = require('../../utils/abstract-repository');
 
 const initSatellitesData = () => {
   const satellitesData = {};

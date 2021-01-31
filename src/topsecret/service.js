@@ -3,9 +3,9 @@ const logger = require('../config/logger');
 const { isEmptyObject } = require('../utils/utils');
 const ApiError = require('../utils/ApiError');
 const { getLocation, getMessage } = require('./algorithms');
-const MemoryRepository = require('./memory-repository');
+const Repository = require('./repository');
 
-const memoryRepository = new MemoryRepository();
+const repository = new Repository();
 
 const getDataFromSatellites = (satellites) => {
   const { distances, partialMessages } = satellites.reduce(
@@ -31,28 +31,28 @@ const getMessageAndLocation = async ({ satellites }) => {
       message: finalMessage,
     };
   } catch (error) {
-    logger.error(error);
-    throw new ApiError(httpStatus.BAD_REQUEST, 'There is not enough information.');
+    logger.debug(error);
+    throw new ApiError(httpStatus.NOT_FOUND, 'There is not enough information.');
   }
 };
 
 const getStoredMessageAndLocation = async () => {
-  const storedMessageAndLocation = await memoryRepository.getMessageAndLocation();
+  const storedMessageAndLocation = await repository.getMessageAndLocation();
   if (isEmptyObject(storedMessageAndLocation)) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'There is not enough information.');
+    throw new ApiError(httpStatus.NOT_FOUND, 'There is not enough information.');
   }
   return storedMessageAndLocation;
 };
 
 const processAndSaveSingleSatelliteData = async (satelliteData) => {
-  await memoryRepository.saveSingleSatelliteData(satelliteData);
-  const data = await memoryRepository.getAllSatellitesData();
+  await repository.saveSingleSatelliteData(satelliteData);
+  const data = await repository.getAllSatellitesData();
 
   const isEnoughSatellitesData = data.length >= 3;
   if (isEnoughSatellitesData) {
     try {
       const { message, position: location } = await getMessageAndLocation({ satellites: data });
-      await memoryRepository.saveMessageAndLocation(message, location);
+      await repository.saveMessageAndLocation(message, location);
     } catch (error) {
       logger.error(error);
     }

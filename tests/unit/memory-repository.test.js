@@ -1,4 +1,4 @@
-const MemoryRepository = require('../../src/topsecret/memory-repository');
+const MemoryRepository = require('../../src/topsecret/repository/memory-repository');
 
 const memoryRepository = new MemoryRepository();
 
