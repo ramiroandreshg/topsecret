@@ -87,24 +87,25 @@ LOGGLY_TOKEN=<valid-loggly-customer-token>
 
 ```
 src\
- |--config\           # Environment variables and config/logs management
- |--docs\             # OAS - Swagger files
- |--middlewares\      # Custom express middlewares
- |--routes\           # Routes - global definitions
- |--topsecret\        # topsecret service and business logic
-  |--algorithms\      # GetMessage and GetLocation implementation
-  |--controllers.js   # Route controllers (controller layer)
-  |--repository.js    # Repository (data layer)
-  |--routes.js        # Routes - internal topsecret routes definitios
-  |--service.js       # Business Logic (service layer)
-  |--validations.js   # Request data validation schemas
- |--utils\            # Utility classes and functions
- |--app.js            # Express app definition
- |--index.js          # App entry point
+ |--config\             # Environment variables and config/logs management
+ |--docs\               # OAS - Swagger files
+ |--middlewares\        # Custom express middlewares
+ |--routes\             # Routes - global definitions
+ |--topsecret\          # topsecret service and business logic
+  |--algorithms\        # GetMessage and GetLocation implementation
+  |--controllers.js     # Route controllers (controller layer)
+  |--repository\        # Repository (data layer)
+   |--memory-repository # Concrete implementation for in memory repository
+  |--routes.js          # Routes - internal topsecret routes definitios
+  |--service.js         # Business Logic (service layer)
+  |--validations.js     # Request data validation schemas
+ |--utils\              # Utility classes and functions
+ |--app.js              # Express app definition
+ |--index.js            # App entry point
  
 tests\
- |--integration\      # Integration tests
- |--unit\             # Unit tests
+ |--integration\        # Integration tests
+ |--unit\               # Unit tests
 ```
 
 ## API Documentation

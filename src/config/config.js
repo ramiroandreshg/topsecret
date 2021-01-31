@@ -39,4 +39,7 @@ module.exports = {
     getLocationPath: 'v1',
     getMessagePath: 'v1',
   },
+  repository: {
+    type: 'memory',
+  },
 };

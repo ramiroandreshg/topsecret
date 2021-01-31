@@ -1,12 +1,8 @@
 /*
- assumptions for v1:
+ preconditions for v1:
   exactly 3 partialmessages
   messages have the same exact length
   there's no phasing between them
-
-  v2 will deal with more complexity
-
-  logic: v1 just iterate once through array length and keeps the first word it can find.
 */
 const getMessage = (partialMessages) => {
   return new Promise((resolve, reject) => {
