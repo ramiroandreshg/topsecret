@@ -28,7 +28,7 @@ module.exports = {
   satellites: SAT_DATA,
   loggly: {
     enabled: !!envVars.LOGGLY_ENABLED || false,
-    subdomain: 'topsecret',
+    subdomain: 'fuegodequasar',
     customToken: envVars.LOGGLY_TOKEN,
   },
   newRelic: {
