@@ -1,4 +1,4 @@
-const { findIntersection } = require('../../src/topsecret-msg/algorithms/v1/circle-intersection');
+const { findIntersection } = require('../../src/topsecret/algorithms/v1/circle-intersection');
 
 describe('Find circle intersection unit tests', () => {
   it('should return no intersection if circles are too far away from eachother', () => {

@@ -16,7 +16,7 @@ if (config.loggly.enabled) {
     subdomain: config.loggly.subdomain,
     inputToken: config.loggly.customToken,
     json: true,
-    tags: ['topsecret', os.hostname(), process.env.NODE_ENV],
+    tags: ['fuegodequasar', os.hostname(), process.env.NODE_ENV],
     format: winston.format.combine(
       enumerateErrorFormat(),
       winston.format.uncolorize(),

@@ -1,0 +1,60 @@
+components:
+  schemas:
+    MessageAndLocation:
+      type: object
+      properties:
+        position:
+          type: object
+          properties:
+            x:
+              type: number
+            y:
+              type: number
+        message:
+          type: string
+
+    SatelliteData:
+      type: object
+      properties:
+        name:
+          type: string
+        distance:
+          type: number
+        message:
+          type: array
+          items:
+            type: string
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 400
+            message: Bad request.
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 404
+            message: Not found.
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,6 +1,11 @@
-// require('newrelic'); // enable this once we have an account
-const app = require('./app');
 const config = require('./config/config');
+
+if (config.newRelic.enabled) {
+  // eslint-disable-next-line global-require
+  require('newrelic');
+}
+
+const app = require('./app');
 const logger = require('./config/logger');
 
 let server;

@@ -13,7 +13,7 @@ const processDataFromSingleSatellite = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(satelliteData);
 });
 
-const getMessageFromSplitSatellitesData = catchAsync(async (req, res) => {
+const getSecretFromSplitSatellitesData = catchAsync(async (req, res) => {
   const topsecretMessage = await topsecretService.getStoredMessageAndLocation();
   res.status(httpStatus.OK).send(topsecretMessage);
 });
@@ -21,5 +21,5 @@ const getMessageFromSplitSatellitesData = catchAsync(async (req, res) => {
 module.exports = {
   processDataFromMultipleSatellites,
   processDataFromSingleSatellite,
-  getMessageFromSplitSatellitesData,
+  getSecretFromSplitSatellitesData,
 };

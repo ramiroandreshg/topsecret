@@ -1,4 +1,4 @@
-const { getMessage } = require('../../src/topsecret-msg/algorithms/v1/get-message');
+const { getMessage } = require('../../src/topsecret/algorithms/v1/get-message');
 
 describe('getMessage v1 unit tests', () => {
   it('should find a message when a given satellite got it complete', async () => {
